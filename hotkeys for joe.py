@@ -30,7 +30,7 @@ print("F3 = 14K Template")
 print("F4 = Logos Template")
 print("F11 = Open SKU Search")
 print("F12 = Open MagicArt")
-print("Ctrl + 5 : Close Hotkeys Program")
+print("Shift + Escape : Close Hotkeys Program")
 print("Good luck, and have a nice day!")
 
 
@@ -170,10 +170,10 @@ bindings = [
     [["F4"], None, open_14K],
     [["F5"], None, open_logos],
     [["F11"], None, open_SKU_search],
-    [["control", "b"], None, horizontal_allignment],
+    [["F12"], None, open_templates],
+    [["control", "shift"], None, horizontal_allignment],
     [["control", "alt"], None, center_allignment],
     [["shift", "escape"], None, exit_application],
-    [["F12"], None, open_templates],
 ]
 
 register_hotkeys(bindings)
