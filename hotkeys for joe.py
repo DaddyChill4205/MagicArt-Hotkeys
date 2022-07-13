@@ -20,18 +20,20 @@ is_alive = True
 
 dont_fuck_up = False
 
+usual_sleep_time = 1
+
 print("Good Morning!")
 print("These keyboard commands are for the MagicArt 5 program.")
-print("Ctrl + 1 : .925 Template")
-print("Ctrl + 2 : 10K Template")
-print("Ctrl + 3 : 14K Template")
-print("Ctrl + 4 : Logos Template")
+print("F1 = .925 Template")
+print("F2 = 10K Template")
+print("F3 = 14K Template")
+print("F4 = Logos Template")
+print("F11 = Open SKU Search")
+print("F12 = Open MagicArt")
 print("Ctrl + 5 : Close Hotkeys Program")
 print("Good luck, and have a nice day!")
 
-#https://stackoverflow.com/questions/4606919/in-python-try-until-no-error
 
-usual_sleep_time = 1
 
 def open_templates():
     global dont_fuck_up
@@ -48,8 +50,13 @@ def open_templates():
         click_if_exists(r'C:\Users\rcherveny\Desktop\Keyboard Commands\images\fullscreen.png')
 
         #minimizing object property box
-        click_if_exists(r'C:\Users\rcherveny\Desktop\Keyboard Commands\images\object property pin.png')
-        
+        found = click_if_exists(r'C:\Users\rcherveny\Desktop\Keyboard Commands\images\object property pin.png')
+        if not found:
+            click_if_exists(r'C:\Users\rcherveny\Desktop\Keyboard Commands\images\highlighted open magicart.png')
+            click_if_exists(r'C:\Users\rcherveny\Desktop\Keyboard Commands\images\open magicart.png')
+            click_if_exists(r'C:\Users\rcherveny\Desktop\Keyboard Commands\images\object property pin.png')
+            click_if_exists(r'C:\Users\rcherveny\Desktop\Keyboard Commands\images\fullscreen.png')
+
         #process to open templates
         for i in template_list:
             hotkey("ctrl", "o")
@@ -114,6 +121,15 @@ def open_14K():
         dont_fuck_up = False
     print("Command Successful")
 
+def open_SKU_search():
+    global dont_fuck_up
+    if not dont_fuck_up:
+        dont_fuck_up = True
+        print("opening SKU finder...")
+        os.startfile(r'C:\Users\rcherveny\Desktop\Keyboard Commands\sku_search.py')
+        dont_fuck_up = False
+    print("Command Successful")
+
 def open_logos():
     global dont_fuck_up
     if not dont_fuck_up:
@@ -153,6 +169,7 @@ bindings = [
     [["F3"], None, open_10K],
     [["F4"], None, open_14K],
     [["F5"], None, open_logos],
+    [["F11"], None, open_SKU_search],
     [["control", "b"], None, horizontal_allignment],
     [["control", "alt"], None, center_allignment],
     [["shift", "escape"], None, exit_application],
